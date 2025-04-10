@@ -24,7 +24,7 @@ export default function App() {
   //same thing for date
     //make a function that when the datapicker is changed, it will detect if the platform is IOS 
     const onChangeDate = (event, selectedDate) => {
-      setDatePicker(Platform.OS === 'ios')
+      setShowDate(Platform.OS === 'ios')
       if (selectedDate){
         setDate(selectedDate);
       }
