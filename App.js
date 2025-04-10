@@ -1,53 +1,29 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-
-import DropDownPicker from 'react-native-dropdown-picker';
+import { View } from 'react-native';
+import CustomSwitch from './Switch';
 import styles from './styles';
+import { Switch } from 'react-native-web';
 
-function MyDropdown() {
 
-  //created three values for open, value, and items that are used to manage the state of the dropdown
-  //open is used to control the visibility of the dropdown
-  //value is used to store the selected value from the dropdown
-  //items is used to store the list of items to be displayed in the dropdown
-  const [open, setOpen] = useState(false);
+export default function App() {
+  const [first,setFirst] = useState(false);
+  const [second,setSecond] = useState(false);
 
-  const [value, setValue] = useState(null);
-
-  const [items, setItems] = useState([
-
-    { label: 'Item 1', value: 'item1' },
-
-    { label: 'Item 2', value: 'item2' },
-
-  ]);
-
-  return (
-
+  return(
     <View style={styles.container}>
-
-    <DropDownPicker
-
-      open={open}
-
-      value={value}
-
-      items={items}
-
-      setOpen={setOpen}
-
-      setValue={setValue}
-
-      setItems={setItems}
-
-    />
-    <Text>{value}</Text>
-
+      <Switch
+        label="Disable Next Switch"
+        value={first}
+        disabled={second}
+        onValueChange={setFirst}
+      />
+      <Switch
+        label="Disable Previous Switch"
+        value={second}
+        disabled={first}
+        onValueChange={setSecond}
+      />
+     
     </View>
-    
-
-  );
-
+  )
 }
-
-export default MyDropdown;
